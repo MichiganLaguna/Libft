@@ -6,11 +6,13 @@
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:55:53 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/07 17:01:09 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:24:15 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *s)
+#include "libft.h"
+
+int	ft_strlen(const char *s)
 {
 	int	i;
 

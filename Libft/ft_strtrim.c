@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 17:59:42 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/09 16:26:37 by nriviere         ###   ########.fr       */
+/*   Created: 2022/11/15 21:45:14 by nriviere          #+#    #+#             */
+/*   Updated: 2022/11/15 22:01:37 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	(char *)s;
-	while (n)
+	char	*out;
+	int	i;
+
+	i = 0;
+	out = malloc((ft_strlen(s1) + 1 ) * sizeof(char));
+	if (!out)
+		return (NULL);
+	while (*s1)
 	{
-		s[n] = 0;
-		n++;
+		if (ft_strchr(set, *s1))
+		{
+			out[i] = *s1;
+			i++;
+		}
+		s1++;
 	}
-	return (s);
+	out[i] = '\0';
+	return (out);
 }

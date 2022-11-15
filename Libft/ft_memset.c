@@ -6,21 +6,19 @@
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:01:31 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/07 18:15:24 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:25:38 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *s, int c, int n)
-{
-	char	*ptr;
-	int		i;
+#include "libft.h"
 
-	i = 0;
-	ptr = s;
-	while (i < n)
+void	*ft_memset(void *s, int c, size_t n)
+{
+	(char *)s;
+	while (n)
 	{
-		ptr[i] = c;
-		i++;
+		s[n] = c;
+		n++;
 	}
-	return (ptr);
+	return (s);
 }
