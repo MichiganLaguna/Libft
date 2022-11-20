@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 17:58:01 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/20 12:31:40 by nriviere         ###   ########.fr       */
+/*   Created: 2022/11/20 11:05:10 by nriviere          #+#    #+#             */
+/*   Updated: 2022/11/20 11:40:30 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	int		out;
+	int		i;
+	char	*out;
 
+	out = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!out)
+		return (out);
 	i = 0;
-	out = ft_strlen(dst);
-	while (i < size - 1 || src[i])
+	while (s[i])
 	{
-		dst[out + i] = src[i];
+		out[i] = f(i, s[i]);
+		i++;
 	}
-	dst[out + i] = '\0';
-	return (out + ft_strlen(src));
+	return (out);
 }

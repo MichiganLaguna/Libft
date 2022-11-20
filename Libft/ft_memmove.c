@@ -6,7 +6,7 @@
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:30:21 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/11 16:07:15 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/20 12:42:50 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char		*dest_t;
 	unsigned const char	*src_t;
-	int					i;
+	size_t				i;
 	int					right;
 
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:59:42 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/09 16:26:37 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/20 12:47:25 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	(char *)s;
-	while (n)
-	{
-		s[n] = 0;
-		n++;
-	}
-	return (s);
+	unsigned char	*s_t;
+
+	s_t = s;
+	while (n--)
+		s_t[n] = 0;
 }

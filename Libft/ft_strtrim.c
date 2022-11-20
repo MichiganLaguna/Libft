@@ -6,7 +6,7 @@
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:45:14 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/15 22:01:37 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/20 11:41:47 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*out;
-	int	i;
+	int		i;
 
 	i = 0;
-	out = malloc((ft_strlen(s1) + 1 ) * sizeof(char));
+	out = malloc((ft_strlen(s1) + 1) * sizeof(char));
 	if (!out)
 		return (NULL);
 	while (*s1)

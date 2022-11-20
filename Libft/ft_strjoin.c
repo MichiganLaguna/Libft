@@ -6,7 +6,7 @@
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 17:26:03 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/15 21:41:43 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/20 11:41:05 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*out;
-	int	i;
+	int		i;
 
 	out = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!out)

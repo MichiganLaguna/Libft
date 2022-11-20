@@ -6,7 +6,7 @@
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:01:31 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/09 16:25:38 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/20 12:12:07 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	(char *)s;
+	unsigned char	*s_t;
+
+	s_t = s;
 	while (n)
 	{
-		s[n] = c;
+		s_t[n] = c;
 		n++;
 	}
 	return (s);
