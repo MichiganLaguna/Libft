@@ -6,7 +6,7 @@
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:27:09 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/20 12:39:44 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/23 12:14:13 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	dest_t = dest;
 	src_t = src;
-	while (n)
-	{
+	while (n--)
 		dest_t[n] = src_t[n];
-		n--;
-	}
 	return (dest);
 }

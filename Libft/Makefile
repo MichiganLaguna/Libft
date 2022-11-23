@@ -1,8 +1,10 @@
 SRC=$(patsubst %.c,%.o,$(wildcard ft_*.c))
 
+MANF=$(filter-out ft_%_bonus.o, ${SRC})
+
 HEADER=.
 
-ARNAME=libft.a
+NAME=libft.a
 
 CC=gcc
 
@@ -13,20 +15,21 @@ RM=rm -f
 .c.o:
 	${CC} ${CFLAGS} -I${HEADER} -c $< -o ${<:.c=.o}
 
-all: ${ARNAME}
+all: ${NAME}
 
-${ARNAME}: ${SRC}
-	ar -rcs ${ARNAME} ${SRC}
-	
-bonus:
-	echo "suck mah dick"
-
+${NAME}: ${MANF}
+	ar -rcs ${NAME} ${MANF}
 	
 clean:
 	${RM} ${SRC}
 
+
 fclean: clean
-	${RM} ${ARNAME}
+	${RM} ${NAME}
+
+
+bonus: ${SRC}
+	ar -rcs ${NAME} ${SRC}
 
 re: fclean all
 
