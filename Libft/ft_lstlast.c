@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 17:34:17 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/23 17:21:07 by nriviere         ###   ########.fr       */
+/*   Created: 2022/11/23 10:51:27 by nriviere          #+#    #+#             */
+/*   Updated: 2022/11/23 10:52:43 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+t_list	*ft_lstlast(t_list *lst)
 {
-	int	sign;
-	int	out;
-
-	out = 0;
-	sign = 1;
-	while ((*nptr > 8 && *nptr < 14) || *nptr == 32)
-		nptr++;
-	if (*nptr == '+')
-		nptr++;
-	else if (*nptr == '-')
-	{
-		sign = -1;
-		nptr++;
-	}
-	while (*nptr > 47 && *nptr < 58)
-	{
-		out = out * 10 + (*nptr - 48);
-		nptr++;
-	}
-	return (out * sign);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

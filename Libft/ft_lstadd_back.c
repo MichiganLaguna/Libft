@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 17:34:17 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/23 17:21:07 by nriviere         ###   ########.fr       */
+/*   Created: 2022/11/23 10:53:53 by nriviere          #+#    #+#             */
+/*   Updated: 2022/11/23 10:59:03 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	sign;
-	int	out;
+	t_list	*tmp;
 
-	out = 0;
-	sign = 1;
-	while ((*nptr > 8 && *nptr < 14) || *nptr == 32)
-		nptr++;
-	if (*nptr == '+')
-		nptr++;
-	else if (*nptr == '-')
-	{
-		sign = -1;
-		nptr++;
-	}
-	while (*nptr > 47 && *nptr < 58)
-	{
-		out = out * 10 + (*nptr - 48);
-		nptr++;
-	}
-	return (out * sign);
+	tmp = *lst;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }

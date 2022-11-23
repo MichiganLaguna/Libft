@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 17:34:17 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/23 17:21:07 by nriviere         ###   ########.fr       */
+/*   Created: 2022/11/23 11:08:17 by nriviere          #+#    #+#             */
+/*   Updated: 2022/11/23 11:42:08 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	sign;
-	int	out;
+	t_list	*tmp;
 
-	out = 0;
-	sign = 1;
-	while ((*nptr > 8 && *nptr < 14) || *nptr == 32)
-		nptr++;
-	if (*nptr == '+')
-		nptr++;
-	else if (*nptr == '-')
+	while (lst)
 	{
-		sign = -1;
-		nptr++;
+		tmp = lst->next;
+		f(lst);
+		lst = tmp;
 	}
-	while (*nptr > 47 && *nptr < 58)
-	{
-		out = out * 10 + (*nptr - 48);
-		nptr++;
-	}
-	return (out * sign);
 }

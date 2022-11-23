@@ -6,7 +6,7 @@
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 10:21:06 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/20 11:43:50 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:41:44 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,23 @@ static int	ft_power(int i, unsigned int n)
 
 static int	ft_itoa_size_str(long n, int base)
 {
-	if (n < 0)
-		return (1 + ft_itoa_size_str(-n, base));
 	if (n / base == 0)
 		return (1);
 	return (1 + ft_itoa_size_str(n / base, base));
 }
+#include <stdio.h>
 
 char	*ft_itoa(int n)
 {
 	char	*out;
 	int		size;
 	int		i;
+}
 
-	size = ft_itoa_size_str(n, 10);
-	out = ft_calloc(size + 1, sizeof(char));
-	if (!out)
-		return (out);
-	i = 0;
-	if (n < 0)
-	{
-		out[i] = '-';
-		size--;
-		i++;
-	}
-	while (i < size)
-	{
-		out[i] = n / ft_power(10, size - i - 1) % 10;
-		i++;
-	}
-	return (out);
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	printf("%d:", ft_atoi(argv[1]));
+	printf("%s\n", ft_itoa(ft_atoi(argv[1])));
+	return (0);
 }

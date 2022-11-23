@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 17:34:17 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/23 17:21:07 by nriviere         ###   ########.fr       */
+/*   Created: 2022/11/23 11:03:25 by nriviere          #+#    #+#             */
+/*   Updated: 2022/11/23 15:45:48 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	sign;
-	int	out;
+	t_list	*tmp;
+	t_list	*next;
 
-	out = 0;
-	sign = 1;
-	while ((*nptr > 8 && *nptr < 14) || *nptr == 32)
-		nptr++;
-	if (*nptr == '+')
-		nptr++;
-	else if (*nptr == '-')
+	tmp = *lst;
+	while (tmp->next)
 	{
-		sign = -1;
-		nptr++;
+		next = tmp->next;
+		ft_lstdelone(tmp, del);
+		tmp = next;
 	}
-	while (*nptr > 47 && *nptr < 58)
-	{
-		out = out * 10 + (*nptr - 48);
-		nptr++;
-	}
-	return (out * sign);
+	ft_lstdelone(tmp, del);
+	lst = 0;
 }

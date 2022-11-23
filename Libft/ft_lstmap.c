@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 17:34:17 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/23 17:21:07 by nriviere         ###   ########.fr       */
+/*   Created: 2022/11/23 11:12:44 by nriviere          #+#    #+#             */
+/*   Updated: 2022/11/23 15:46:38 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	sign;
-	int	out;
+	t_list	*tmp;
+	t_list	*start;
+	t_list	*out;
 
-	out = 0;
-	sign = 1;
-	while ((*nptr > 8 && *nptr < 14) || *nptr == 32)
-		nptr++;
-	if (*nptr == '+')
-		nptr++;
-	else if (*nptr == '-')
+
+	tmp = lst->next;
+	start = ft_lstnew(f(lst));
+	if (!start)
+		return (0);
+	lst = tmp;
+	while (lst)
 	{
-		sign = -1;
-		nptr++;
+		tmp = lst->next;
+		out = ft_lstnew(f(lst));
+		if (!out)
+		{
+			ft_lstclear(&start, del);
+			return (0);
+		}
+		ft_lstadd_back(&start, out);
+		lst = tmp;
 	}
-	while (*nptr > 47 && *nptr < 58)
-	{
-		out = out * 10 + (*nptr - 48);
-		nptr++;
-	}
-	return (out * sign);
+	return (start);
 }
