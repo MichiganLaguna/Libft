@@ -16,10 +16,10 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*tmp;
 
-	while (lst)
+	if (lst != 0)
 	{
 		tmp = lst->next;
-		f(lst);
-		lst = tmp;
+		f(lst->content);
+		ft_lstiter(tmp, f);
 	}
 }

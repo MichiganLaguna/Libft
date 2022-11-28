@@ -5,45 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 10:21:06 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/23 18:41:44 by nriviere         ###   ########.fr       */
+/*   Created: 2022/11/28 17:21:51 by nriviere          #+#    #+#             */
+/*   Updated: 2022/11/28 17:21:55 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int	ft_power(int i, unsigned int n)
-{
-	int	pow;
-
-	if (n == 0)
-		return (1);
-	pow = ft_power(i, n / 2);
-	if (n & 1)
-		return (i * pow * pow);
-	return (pow * pow);
-}
-
-static int	ft_itoa_size_str(long n, int base)
+static int	ft_get_char_size(int n, int base)
 {
 	if (n / base == 0)
 		return (1);
-	return (1 + ft_itoa_size_str(n / base, base));
+	return (1 + ft_get_char_size(n / base, base));
 }
-#include <stdio.h>
+
+static	int	ft_power(int n, int power)
+{
+	int	pow;
+
+	if (power == 0)
+		return (1);
+	pow = ft_power(n, power / 2);
+	if (power & 1)
+		return (n * pow * pow);
+	return (pow * pow);
+}
 
 char	*ft_itoa(int n)
 {
-	char	*out;
-	int		size;
-	int		i;
-}
+	char			*out;
+	int				size;
+	int				i;
+	unsigned int	n_tmp;
 
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	printf("%d:", ft_atoi(argv[1]));
-	printf("%s\n", ft_itoa(ft_atoi(argv[1])));
-	return (0);
+	size = ft_get_char_size(n, 10);
+	i = 0;
+	if (n < 0)
+		i++;
+	out = ft_calloc(sizeof(char), size + i + 1);
+	if (!out)
+		return (out);
+	n_tmp = (unsigned int)n;
+	if (i)
+	{
+		out[0] = '-';
+		n_tmp = (unsigned int )-n;
+	}
+	while (size--)
+	{
+		out[i] = (n_tmp / ft_power(10, size) % 10) + 48;
+		i++;
+	}
+	return (out);
 }

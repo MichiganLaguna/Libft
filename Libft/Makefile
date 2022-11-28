@@ -34,6 +34,9 @@ clean:
 fclean: clean
 	${RM} ${NAME}
 
+so:
+	${CC} -nostartfiles -fPIC ${CFLAGS} ${SRC}
+	gcc -nostartfiles -shared -o libft.so ${OBJ}
 
 
 re: fclean all

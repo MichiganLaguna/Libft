@@ -17,9 +17,12 @@ void	*ft_calloc(size_t nmemb, size_t n)
 {
 	void	*ptr;
 
+	if (!n)
+		return (malloc(0));
 	if (nmemb * n / n != nmemb)
 		return (0);
 	ptr = malloc(nmemb * n);
-	ft_bzero(ptr, nmemb * n);
+	if (ptr)
+		ft_bzero(ptr, nmemb * n);
 	return (ptr);
 }

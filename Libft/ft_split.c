@@ -34,6 +34,8 @@ static int	ft_get_words(const char *s, char sep)
 			length++;
 		s++;
 	}
+	if (length)
+		words++;
 	return (words);
 }
 
@@ -44,20 +46,20 @@ static int	ft_get_next_word(const char *s, char c, char **out)
 
 	start = 0;
 	length = 0;
-	while (s[start] == c)
+	while (s[start] && s[start] == c)
 		start++;
-	while (s[start + length] != c)
+	while (s[start + length] && s[start + length] != c)
 		length++;
 	*out = ft_substr(s, start, length);
 	return (start + length);
 }
 
-void	ft_split_free(char **s, int size)
+void	ft_split_free(char **s)
 {
 	int	i;
 
 	i = 0;
-	while (i < size)
+	while (s[i])
 	{
 		free(s[i]);
 		i++;
@@ -72,6 +74,8 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		ln;
 
+	if (!s)
+		return (0);
 	size = ft_get_words(s, c);
 	out = ft_calloc(size + 1, sizeof(char *));
 	ln = 0;
@@ -83,10 +87,11 @@ char	**ft_split(char const *s, char c)
 		ln += ft_get_next_word(s + ln, c, &out[i]);
 		if (!out[i])
 		{
-			ft_split_free(out, i);
-			return (0);
+			ft_split_free(out);
+			return (out);
 		}
 		i++;
 	}
+	out[i] = 0;
 	return (out);
 }
