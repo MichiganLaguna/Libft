@@ -6,7 +6,7 @@ MANF=$(filter-out ft_lst%.o, ${OBJ})
 
 BONF=$(filter ft_lst%.o, ${OBJ})
 
-HEADER=.
+HEADERS=${wildcard *.h}
 
 NAME=libft.a
 
@@ -17,14 +17,14 @@ CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 
 .c.o:
-	${CC} ${CFLAGS} -I${HEADER} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 all: ${NAME}
 
-${NAME}: ${MANF}
+${NAME}: ${MANF} ${HEADERS}
 	ar -rcs ${NAME} ${MANF}
 	
-bonus: ${BONF}
+bonus: ${BONF} ${HEADERS}
 	ar -rcs ${NAME} ${BONF}
 
 clean:
@@ -33,11 +33,6 @@ clean:
 
 fclean: clean
 	${RM} ${NAME}
-
-so:
-	${CC} -nostartfiles -fPIC ${CFLAGS} ${SRC}
-	gcc -nostartfiles -shared -o libft.so ${OBJ}
-
 
 re: fclean all
 
