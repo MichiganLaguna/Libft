@@ -17,11 +17,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*out;
 	size_t	i;
+	size_t	len_s;
 
 	if (!s)
 		return (0);
-	if ((unsigned int)ft_strlen(s) < start)
+	len_s = (unsigned int)ft_strlen(s);
+	if (len_s < start)
 		len = 0;
+	if (len > len_s - start)
+		len = len_s - start;
 	i = 0;
 	out = ft_calloc(len + 1, sizeof(char));
 	if (out)
