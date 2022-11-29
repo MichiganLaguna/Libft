@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nriviere <nriviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:55:53 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/09 16:24:15 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/29 12:49:29 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_strlen(const char *s)
 {

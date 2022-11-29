@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nriviere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nriviere <nriviere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:45:14 by nriviere          #+#    #+#             */
-/*   Updated: 2022/11/20 11:41:47 by nriviere         ###   ########.fr       */
+/*   Updated: 2022/11/29 12:49:56 by nriviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 int	is_charset(char s1, char const *set)
