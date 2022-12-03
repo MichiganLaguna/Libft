@@ -19,6 +19,7 @@ RM		=	rm -f
 # Main target name
 NAME	=	libft.a
 
+
 # Bonus target name
 BNAME	=	bonus
 
@@ -52,15 +53,12 @@ all: $(NAME)
 
 # Main target rule
 $(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+	ar -rcs $(NAME) $?
 
 $(BNAME): $(OBJS_B)
-	ar -rcs $(NAME) $(OBJS_B)
+	ar -rcs $(NAME) $?
 
-$(OBJS): %.o : %.c $(INC)
-	$(HIDE)$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS_B): %.o : %.c $(INC)
+$(OBJS) $(OBJS_B) : %.o : %.c $(INC)
 	$(HIDE)$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
