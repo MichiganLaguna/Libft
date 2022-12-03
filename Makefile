@@ -43,7 +43,7 @@ OBJS	=	$(patsubst %.c,%.o,$(SRCS))
 OBJS_B	=	$(patsubst %.c,%.o,$(SRCS_B))
 
 # Includes
-INC		=	$(wildcard *.h)
+INC		=	libft.h
 
 #-------------------------------------------------------------------------------#
 #									RULES										#
@@ -56,7 +56,7 @@ $(NAME): $(OBJS)
 	ar -rcs $(NAME) $?
 
 $(BNAME): $(OBJS_B)
-	ar -rcs $(NAME) $?
+	ar -rcs $(NAME) $(OBJS_B)
 
 $(OBJS) $(OBJS_B) : %.o : %.c $(INC)
 	$(HIDE)$(CC) $(CFLAGS) -c $< -o $@
@@ -68,3 +68,4 @@ fclean: clean
 	$(HIDE)$(RM) $(NAME)
 
 re: fclean all
+
